@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Biblioteca</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+
+<body>
+    <div class="form">
+        <div class="container-fluid">
+            <h1 class="main-title text-center ">The Book Library</h1>
+        </div>
+        <div class="container">
+            <form method="post">
+                <div class="form-group">
+                    <label>Title <span class="text-danger">*</span></label>
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Enter the book title" required>
+                </div>
+                <div class="form-group">
+                    <label>Author <span class="text-danger">*</span></label>
+                    <input type="text" name="author" id="author" class="form-control" placeholder="Enter the book author" required>
+                </div>
+                <div class="form-group">
+                    <label>Pages <span class="text-danger">*</span></label>
+                    <input type="number" name="pages" id="pages" class="form-control" placeholder="Enter the amount of pages" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status">
+                      <option>Read</option>
+                      <option>Not Read</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit" value="submit" id="submit" class="btn btn-secondary btn-block"> Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
