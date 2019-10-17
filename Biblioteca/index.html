@@ -19,7 +19,7 @@
             <h1 class="main-title text-center ">The Book Library</h1>
         </div>
         <div class="container">
-            <form action="table.html" method="get" target="_self">
+            <form method="post" target="_self">
                 <div class="form-group">
                     <label>Title <span class="text-danger">*</span></label>
                     <input type="text" name="title" id="title" class="form-control" placeholder="Enter the book title" required>
@@ -45,6 +45,34 @@
             </form>
         </div>
     </div>
+
+    <div class="w-auto p-3" id="table">
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="rows">
+                    <!-- <td id='titleCol'></td>
+                    <td id='authorCol'></td>
+                    <td id='pagesCol'></td>
+                    <td id='statusCol'><button type='button' id='changeStatus'>Read</button></td>
+                    <td id='deleteCol'><b>Delete</b></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--<button type='button' id='atualizar'>Read</button>
+    <div class='w-auto p-3' id='return'>
+        <button type='button' id='returnButton'>Retornar ao Cadastro</button>
+    </div>-->
 </body>
 
 </html>
