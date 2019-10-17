@@ -2,3 +2,15 @@
 .hide {
     display: none;
 }
+
+#table{
+    margin-bottom: 100px;
+}
+
+#deleteCol{
+    color:rgb(172, 0, 0);
+}
+
+#return{
+    text-align: center;
+}
