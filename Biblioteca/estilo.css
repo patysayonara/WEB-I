@@ -9,10 +9,15 @@ span {
     font-family: 'Alegreya SC', serif;
 }
 
-.table {
-    border-radius: 10px;
-}
-
 img {
     max-width: 150px;
+}
+
+input::placeholder,
+option {
+    font-size: 13pt;
+}
+
+#table {
+    display: none;
 }
