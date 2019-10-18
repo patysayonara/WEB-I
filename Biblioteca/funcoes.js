@@ -8,6 +8,7 @@ $(document).ready(function() {
 
         fillTable();
         firstSubmit = false;
+        $(this).trigger("reset");
         $("#form").css("display", "none");
         $("#table").css("display", "block");
     });
@@ -21,15 +22,16 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".deleteCol", function() {
-        var id = parseInt($(this).attr("id"));
-        arrayBooks.splice(id - 1, 1);
-        fillTable();
+        if(confirm('Book will be deleted from library. Continue?')){
+            var id = parseInt($(this).attr("id"));
+            arrayBooks.splice(id - 1, 1);
+            fillTable();
+        }
     });
 
     $('#returnButton').click(function() {
-        $("#table").fadeOut("slow");
+        $("#table").css("display", "none");
         $("#form").css("display", "block");
-
     });
 
     function fillTable() {
