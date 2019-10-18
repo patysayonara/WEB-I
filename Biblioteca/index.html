@@ -5,74 +5,83 @@
     <title>Biblioteca</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="funcoes.js"></script>
     <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 
 <body>
-    <div class="form">
-        <div class="container-fluid">
-            <h1 class="main-title text-center ">The Book Library</h1>
+
+    <div class="main-title text-center mt-5">
+        <div class="header">
+            <img src="livros.png" alt="livros">
+            <h1>The Book Library</h1>
         </div>
-        <div class="container">
-            <form method="post" target="_self">
-                <div class="form-group">
-                    <label>Title <span class="text-danger">*</span></label>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="Enter the book title" required>
+
+    </div>
+
+    <div class="container-fluid mt-5 ml-3">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form">
+                    <form method="post" target="_self">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Title</span>
+                            </div>
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Enter the book title" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend"><span class="input-group-text">Author</span> </div>
+                            </label>
+                            <input type="text" name="author" id="author" class="form-control" placeholder="Enter the book author" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend"><span class="input-group-text">Pages</span></div>
+                            </label>
+                            <input type="number" name="pages" id="pages" class="form-control" placeholder="Enter the amount of pages" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend"><span class="input-group-text">Status</span></div>
+                            </label>
+                            <select class="form-control" id="status">
+                                <option>Read</option>
+                                <option>Not Read</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="submit" id="submit" value="Add Book" class="btn btn-outline-secondary btn-block"></input>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label>Author <span class="text-danger">*</span></label>
-                    <input type="text" name="author" id="author" class="form-control" placeholder="Enter the book author" required>
+            </div>
+
+            <div class="col-lg-7">
+                <div id="table">
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="w-50">Title</th>
+                                <th>Author</th>
+                                <th>Pages</th>
+                                <th>Status</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="rows">
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="form-group">
-                    <label>Pages <span class="text-danger">*</span></label>
-                    <input type="number" name="pages" id="pages" class="form-control" placeholder="Enter the amount of pages" required>
-                </div>
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select class="form-control" id="status">
-                      <option>Read</option>
-                      <option>Not Read</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="submit" id="submit" value="Add Book" class="btn btn-secondary btn-block" ></input>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
-    <div class="w-auto p-3" id="table">
-        <table class="table table-hover table-dark">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Status</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="rows">
-                    <!-- <td id='titleCol'></td>
-                    <td id='authorCol'></td>
-                    <td id='pagesCol'></td>
-                    <td id='statusCol'><button type='button' id='changeStatus'>Read</button></td>
-                    <td id='deleteCol'><b>Delete</b></td> -->
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <!--<button type='button' id='atualizar'>Read</button>
-    <div class='w-auto p-3' id='return'>
-        <button type='button' id='returnButton'>Retornar ao Cadastro</button>
-    </div>-->
 </body>
 
 </html>

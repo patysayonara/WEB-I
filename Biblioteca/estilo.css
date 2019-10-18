@@ -1,16 +1,18 @@
 @charset "utf-8";
-.hide {
-    display: none;
+@import url('https://fonts.googleapis.com/css?family=Alegreya+SC&display=swap');
+#deleteCol {
+    color: rgb(172, 0, 0);
 }
 
-#table{
-    margin-bottom: 100px;
+body,
+span {
+    font-family: 'Alegreya SC', serif;
 }
 
-#deleteCol{
-    color:rgb(172, 0, 0);
+.table {
+    border-radius: 10px;
 }
 
-#return{
-    text-align: center;
+img {
+    max-width: 150px;
 }
