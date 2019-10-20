@@ -25,9 +25,14 @@
 
     <div id="main" class="container-fluid mb-5">
         <div class="row">
-            <div id="form" class="col-lg-6 ml-auto mr-auto mt-5 mb-5">
+            <div id="formToAdd" class="col-lg-6 ml-auto mr-auto mt-5 mb-5">
+                <div class="typeOfAction">
+                    <h4 >Add New Book</h4>
+                    <hr/>
+                </div>
+
                 <div class="form">
-                    <form method="post" target="_self">
+                    <form id="addBooks" method="post" target="_self">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Title</span>
@@ -58,10 +63,36 @@
                     </form>
                 </div>
             </div>
+
+            <div id="formToSearch" class="col-lg-6 ml-auto mr-auto mt-5 mb-5">
+                <div class="typeOfAction">
+                    <h4>Search Book</h4>
+                    <hr/>
+                </div>
+                <div class="form">
+                    <form id="searchBooks" method="post" target="_self">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Title</span>
+                            </div>
+                            <input type="text" name="title" id="searchTitle" class="form-control" placeholder="Enter the book title" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend"><span class="input-group-text">Author</span> </div>
+                            </label>
+                            <input type="text" name="author" id="searchAuthor" class="form-control" placeholder="Enter the book author" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="submit" id="SearchInLibrary" value="Search Book" class="btn btn-outline-secondary btn-block"></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="col-lg-7 ml-auto mr-auto mt-5 mb-5">
                 <div id="table" class="hide">
                     <div class='w-auto p-3' id='return'>
-                        <button class="btn btn-outline-secondary" type="button" id="returnButton">Add New Book</button>
+                        <button class="btn btn-outline-secondary" type="button" id="returnButton">Back To Main</button>
                     </div>
                     <table class="table table-hover">
                         <thead class="thead-light">

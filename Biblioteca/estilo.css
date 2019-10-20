@@ -21,3 +21,11 @@ option {
 #table {
     display: none;
 }
+
+#formToSearch {
+    border-left-style: groove;
+}
+
+.typeOfAction {
+    text-align: center;
+}

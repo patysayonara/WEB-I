@@ -1,21 +1,39 @@
 $(document).ready(function() {
 
-    $("form").submit(function(event) {
+    $("#addBooks").submit(function(event) {
         event.preventDefault();
         Populate();
-
-        arrayBooks.push(new Book($("#title").val(), $("#author").val(), $("#pages").val(), $("#status").val()));
-
-        fillTable();
         firstSubmit = false;
+        if(checkStorage($("#title").val(), $("#author").val())){
+            alert("Book is already registered in this library!");
+        } else {
+            arrayBooks.push(new Book($("#title").val(), $("#author").val(), $("#pages").val(), $("#status").val()));
+            fillTable();
+            $("#formToAdd").css("display", "none");
+            $("#formToSearch").css("display", "none");
+            $("#table").css("display", "block");
+        }
         $(this).trigger("reset");
-        $("#form").css("display", "none");
-        $("#table").css("display", "block");
+    });
+
+    $("#searchBooks").submit(function(event) {
+        event.preventDefault();
+        Populate();
+        firstSubmit = false;
+        if(checkStorage($("#searchTitle").val(),$("#searchAuthor").val())){
+            searchBookInfo($("#searchTitle").val(),$("#searchAuthor").val());
+            $("#formToAdd").css("display", "none");
+            $("#formToSearch").css("display", "none");
+            $("#table").css("display", "block");
+        } else {
+            alert("The book you are searching for is not registered in this library!");
+        }
+        $(this).trigger("reset");
     });
 
     $(document).on('click', '.changeStatus', function() {
-        if ($(this).text() == "Read") {
-            $(this).text("Unread");
+        if($(this).text() == "Read") {
+            $(this).text("Not Read");
         } else {
             $(this).text("Read");
         }
@@ -31,7 +49,8 @@ $(document).ready(function() {
 
     $('#returnButton').click(function() {
         $("#table").css("display", "none");
-        $("#form").css("display", "block");
+        $("#formToAdd").css("display", "block");
+        $("#formToSearch").css("display", "block");
     });
 
     function fillTable() {
@@ -48,6 +67,31 @@ $(document).ready(function() {
             $("tbody").append("</tr>");
         }
 
+    }
+
+    function checkStorage(bookTitle, bookAuthor){
+        for (var i = arrayBooks.length; i > 0; i--) {
+            if(arrayBooks[i - 1].getTitle().toLowerCase() == bookTitle.toLowerCase() && arrayBooks[i - 1].getAuthor().toLowerCase() == bookAuthor.toLowerCase()){
+                return true;
+            }
+            return false;
+        }
+    }
+
+    function searchBookInfo(bookTitle, bookAuthor){
+        $("tbody").empty();
+
+        for (var i = arrayBooks.length; i > 0; i--) {
+            if(arrayBooks[i - 1].getTitle().toLowerCase() == bookTitle.toLowerCase() && arrayBooks[i - 1].getAuthor().toLowerCase() == bookAuthor.toLowerCase()){
+                $("tbody").append("<tr>");
+                $("tbody").append("<td>" + arrayBooks[i - 1].getTitle() + "</td>");
+                $("tbody").append("<td>" + arrayBooks[i - 1].getAuthor() + "</td>");
+                $("tbody").append("<td>" + arrayBooks[i - 1].getPages() + "</td>");
+                $("tbody").append("<td><button type='button' class='changeStatus btn btn-outline-info'>" + arrayBooks[i - 1].getStatus() + "</button></td>");
+                $("tbody").append("<td><button type='button' class='deleteCol btn btn-outline-danger' id=" + i + ">" + "Delete</button></td>");
+                $("tbody").append("</tr>");
+            }
+        }
     }
 
 });
