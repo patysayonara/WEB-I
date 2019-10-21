@@ -32,10 +32,13 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.changeStatus', function() {
+        var id = parseInt($(this).attr("id"));
         if($(this).text() == "Read") {
             $(this).text("Not Read");
+            arrayBooks[id-1].changeStatus("Not Read");
         } else {
             $(this).text("Read");
+            arrayBooks[id-1].changeStatus("Read");
         }
     });
 
@@ -71,7 +74,7 @@ $(document).ready(function() {
             $("tbody").append("<td>" + arrayBooks[i - 1].getTitle() + "</td>");
             $("tbody").append("<td>" + arrayBooks[i - 1].getAuthor() + "</td>");
             $("tbody").append("<td>" + arrayBooks[i - 1].getPages() + "</td>");
-            $("tbody").append("<td><button type='button' class='changeStatus btn btn-outline-info'>" + arrayBooks[i - 1].getStatus() + "</button></td>");
+            $("tbody").append("<td><button type='button' class='changeStatus btn btn-outline-info' id=" + i + ">" + arrayBooks[i - 1].getStatus() + "</button></td>");
             $("tbody").append("<td><button type='button' class='deleteCol btn btn-outline-danger' id=" + i + ">" + "Delete</button></td>");
             $("tbody").append("</tr>");
         }
@@ -96,7 +99,7 @@ $(document).ready(function() {
                 $("tbody").append("<td>" + arrayBooks[i - 1].getTitle() + "</td>");
                 $("tbody").append("<td>" + arrayBooks[i - 1].getAuthor() + "</td>");
                 $("tbody").append("<td>" + arrayBooks[i - 1].getPages() + "</td>");
-                $("tbody").append("<td><button type='button' class='changeStatus btn btn-outline-info'>" + arrayBooks[i - 1].getStatus() + "</button></td>");
+                $("tbody").append("<td><button type='button' class='changeStatus btn btn-outline-info' id=" + i + ">" + arrayBooks[i - 1].getStatus() + "</button></td>");
                 $("tbody").append("<td><button type='button' class='deleteCol btn btn-outline-danger' id=" + i + ">" + "Delete</button></td>");
                 $("tbody").append("</tr>");
             }
@@ -130,15 +133,19 @@ function Book(title, author, pages, status) {
     this.getStatus = function() {
         return this.status;
     }
+
+    this.changeStatus = function(status){
+        this.status = status;
+    }
 }
 
 
 function Populate() {
     if (firstSubmit != false) {
-        arrayBooks.push(new Book("O Conde de Monte Cristo", " Alexandre Dumas", 300, "read"));
-        arrayBooks.push(new Book("Fahrenheit 451", " Ray Bradbury", 300, "read"));
-        arrayBooks.push(new Book("Madame Bovary", " Gustave Flaubert", 300, "read"));
-        arrayBooks.push(new Book("A Insustentável Leveza do Ser", "Milan Kundera", 300, "read"));
+        arrayBooks.push(new Book("O Conde de Monte Cristo", " Alexandre Dumas", 300, "Read"));
+        arrayBooks.push(new Book("Fahrenheit 451", " Ray Bradbury", 300, "Read"));
+        arrayBooks.push(new Book("Madame Bovary", " Gustave Flaubert", 300, "Read"));
+        arrayBooks.push(new Book("A Insustentável Leveza do Ser", "Milan Kundera", 300, "Read"));
     }
 
 }
