@@ -53,6 +53,15 @@ $(document).ready(function() {
         $("#formToSearch").css("display", "block");
     });
 
+    $('#showTable').click(function() {
+        Populate();
+        firstSubmit = false;
+        fillTable();
+        $("#table").css("display", "block");
+        $("#formToAdd").css("display", "none");
+        $("#formToSearch").css("display", "none");
+    });
+
     function fillTable() {
 
         $("tbody").empty();
